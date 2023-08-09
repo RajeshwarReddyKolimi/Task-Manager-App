@@ -48,7 +48,7 @@ The Task Manager App is a full stack web application built using React.js for th
 - Create a .env file in the backend directory and add your MongoDB connection string:
 `MONGODB_URI=your-mongodb-connection-string`
 
-##Usage
+## Usage
 
 - Start the frontend development server:
 `cd ../frontend`
