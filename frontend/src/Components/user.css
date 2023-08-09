@@ -1,0 +1,96 @@
+* {
+    font-family: "Inter", sans-serif;
+    box-sizing: border-box;
+}
+
+:root {
+    --form-width: 280px;
+}
+
+
+.form-back {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.form-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 10px 0px #45454585;
+    padding: 30px;
+    border-radius: 5px;
+    background-color: white;
+    z-index: 1;
+}
+
+.form-header {
+    text-align: center;
+    color: black;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-footer {
+    width: var(--form-width);
+    padding: 10px;
+}
+
+.form-label {
+    width: var(--form-width);
+}
+
+.form-input {
+    margin: 10px;
+    border: 1px solid #454545;
+    width: var(--form-width);
+    padding: 10px;
+}
+
+.form-button {
+    color: white;
+    background-color: #454545;
+    margin: 10px;
+    border: 1px solid #454545;
+    width: var(--form-width);
+    padding: 10px;
+}
+
+.form-input:focus {}
+
+.form-close {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+}
+
+.form-button:hover {
+    background-color: #2b2b2b;
+}
+
+.form-button:active {
+    background-color: #141414;
+}
+
+.toggle-signin {
+    background-color: white;
+    color: #454545;
+    border: none;
+}
+
+.form-warning {
+    color: rgb(211, 39, 39);
+    margin: 10px;
+}
