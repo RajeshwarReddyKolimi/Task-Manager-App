@@ -18,7 +18,7 @@ app.use(session({
     secret: process.env.SESSION_SECRET_KEY,
     resave: false,
     saveUninitialized: true,
-    store: MongoStore.create({ mongoUrl: 'mongodb+srv://ChintuKo:Chintu%40123@cluster0.f5dlwc9.mongodb.net/Database', }),
+    store: MongoStore.create({ mongoUrl: process.env.DATABASE_URL, }),
     cookie: {
         maxAge: 30 * 24 * 60 * 60 * 1000
     }
