@@ -7,12 +7,15 @@ The Task Manager App is a full stack web application built using React.js for th
 ### User Authentication:
 
 - Users can create accounts by signing up.
+  
 - Users can log in using their credentials.
 
 ### Task Management:
 
 - Users can add new tasks with a title, description, priority, and deadline.
+  
 - Users can delete tasks from their list.
+  
 - Users can move tasks between different states (Todo, Ongoing, Done).
 
 ### Automatic Task Management:
@@ -22,6 +25,7 @@ The Task Manager App is a full stack web application built using React.js for th
 ### User Session:
 
 - User sessions are managed to keep users logged in across sessions.
+  
 - Users can log out to end their session.
 
 ## Getting Started
@@ -29,33 +33,43 @@ The Task Manager App is a full stack web application built using React.js for th
 ### Prerequisites
 
 - Node.js and npm installed on your machine.
+  
 - MongoDB Atlas account for database storage.
 
 ## Installation
 
 - Clone the repository:
+  
 `git clone https://github.com/YourUsername/Task-Manager-App.git`
 
 - Navigate to the frontend directory and install frontend dependencies:
+  
 `cd Task-Manager-App/frontend`
+
 `npm install`
 
 - Navigate to the backend directory and install backend dependencies:
+  
 `npm install`
 
 ## Configuration
 
 - Create a .env file in the backend directory and add your MongoDB connection string:
+  
 `MONGODB_URI=your-mongodb-connection-string`
 
 ## Usage
 
 - Start the frontend development server:
+  
 `cd ../frontend`
+
 `npm start`
 
--Start the backend server:
+- Start the backend server:
+  
 `cd ../backend`
+
 `node server.js`
 
--Access the application in your web browser at http://localhost:3000.
+- Access the application in your web browser at http://localhost:3000.
