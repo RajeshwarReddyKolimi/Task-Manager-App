@@ -83,7 +83,7 @@ export default function Home(props) {
                     </div>
                 </div>}
             <div className="header">
-                <img src="favicon-32X32.png" style={{ width: "40px", margin: "auto" }} />
+                <img src="favicon-32X32.png" alt="logo" style={{ width: "40px", margin: "auto" }} />
                 <div className="app-title">Task Manager</div>
                 <div className="header-buffer"></div>
                 <button className='user-button' onClick={() => setShowUser((prev) => (!prev))}><FaUser className="user" /></button>

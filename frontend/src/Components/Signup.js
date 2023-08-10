@@ -43,7 +43,7 @@ export default function Signup(props) {
     return (
         <div>
             <form className='form-container' method='post' onSubmit={verifySignup}>
-                <img src="favicon-32X32.png" style={{ width: "40px", margin: "auto" }} />
+                <img src="favicon-32X32.png" alt='logo' style={{ width: "40px", margin: "auto" }} />
                 <h2 className='form-header'>Sign up</h2>
                 <div className='form-field'>
                     <label htmlFor="email" className="form-label" id="form-label-email">Email</label>

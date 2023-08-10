@@ -32,7 +32,7 @@ export default function Login(props) {
     return (
         <div>
             <form className='form-container' id="login-form" method='post' onSubmit={verifyLogin}>
-                <img src="favicon-32X32.png" style={{ width: "40px", margin: "auto" }} />
+                <img src="favicon-32X32.png" alt="logo" style={{ width: "40px", margin: "auto" }} />
                 <h2 className='form-header'>Login</h2>
                 <div className='form-field'>
                     <label htmlFor="email" className="form-label" id="login-label-email">Email</label>
