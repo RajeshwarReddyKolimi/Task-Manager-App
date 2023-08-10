@@ -34,9 +34,8 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(path.join(__dirname, '../frontend/build/')));
+// app.use(express.static(path.join(__dirname, '../frontend/build/')));
 
-app.use(express.static(path.join(__dirname, 'views')));
 
 app.get('/session', (req, res) => {
     if (req.session === undefined || req.session.user === undefined)
@@ -44,9 +43,9 @@ app.get('/session', (req, res) => {
     res.status(200).json({ value: true, user: req.session.user });
 });
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
-})
+// app.get('/', (req, res) => {
+//     res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+// })
 
 
 app.post('/signup', async (req, res) => {
