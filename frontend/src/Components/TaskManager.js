@@ -11,13 +11,18 @@ export default function TaskManager() {
     const [currentUser, setCurrentUser] = useState(null);
     useEffect(() => {
         async function checkSession() {
-            const response = await fetch('https://taskmanagerappbyrajeshwar.onrender.com/session');
-            const data = await response.json();
-            if (response.ok) {
-                if (data.value) {
-                    setCurrentUser(data.user.name);
-                    setLoginStatus(true);
+            try {
+                const response = await fetch('https://taskmanagerappbyrajeshwar.onrender.com/session');
+                const data = await response.json();
+                if (response.ok) {
+                    if (data.value) {
+                        setCurrentUser(data.user.name);
+                        setLoginStatus(true);
+                    }
                 }
+            }
+            catch (error) {
+                console.error("Couldn't load details");
             }
         }
         checkSession();
