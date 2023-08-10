@@ -5,7 +5,7 @@ const app = express();
 const port = 3000;
 const mongoose = require('mongoose');
 const User = require('./User');
-const session = require('express-session');
+// const session = require('express-session');
 const MongoStore = require('connect-mongo')
 const cors = require('cors');
 
@@ -51,7 +51,6 @@ app.get('/session', (req, res) => {
 // app.get('/', (req, res) => {
 //     res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
 // })
-
 
 app.post('/signup', async (req, res) => {
     const email = req.body.email;
