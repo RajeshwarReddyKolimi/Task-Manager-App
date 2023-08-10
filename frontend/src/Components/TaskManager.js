@@ -11,7 +11,7 @@ export default function TaskManager() {
     const [currentUser, setCurrentUser] = useState(null);
     useEffect(() => {
         async function checkSession() {
-            const response = await fetch('/session');
+            const response = await fetch('https://taskmanagerappbyrajeshwar.onrender.com/session');
             const data = await response.json();
             if (response.ok) {
                 if (data.value) {
@@ -26,7 +26,7 @@ export default function TaskManager() {
 
     async function logout() {
         try {
-            const response = await fetch('/logout');
+            const response = await fetch('https://taskmanagerappbyrajeshwar.onrender.com/logout');
             const data = response.json();
             if (response.ok) {
                 setLoginStatus(false);

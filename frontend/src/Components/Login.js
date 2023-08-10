@@ -7,7 +7,7 @@ export default function Login(props) {
         try {
             const email = document.getElementById('login-email');
             const password = document.getElementById('login-password');
-            const response = await fetch('/login', {
+            const response = await fetch('https://taskmanagerappbyrajeshwar.onrender.com/login', {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',

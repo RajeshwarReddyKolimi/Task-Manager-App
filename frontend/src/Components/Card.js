@@ -6,7 +6,7 @@ export default function Card(props) {
     const [timeleft, setTimeleft] = useState("");
     async function deleteTask() {
         try {
-            const response = await fetch('/deleteTask', {
+            const response = await fetch('https://taskmanagerappbyrajeshwar.onrender.com/deleteTask', {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ export default function Card(props) {
 
     async function moveTask(moveTo) {
         try {
-            const response = await fetch('/moveTask', {
+            const response = await fetch('https://taskmanagerappbyrajeshwar.onrender.com/moveTask', {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',

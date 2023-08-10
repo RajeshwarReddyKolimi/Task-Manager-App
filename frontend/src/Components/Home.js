@@ -17,7 +17,7 @@ export default function Home(props) {
 
     async function run() {
         try {
-            const response = await fetch('/getTask');
+            const response = await fetch('https://taskmanagerappbyrajeshwar.onrender.com/getTask');
             const data = await response.json();
             const details = data.userdetails;
             if (response.ok) {

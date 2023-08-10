@@ -10,7 +10,7 @@ export default function Form(props) {
         const deadline = document.getElementById('add-task-deadline').value;
         e.preventDefault();
         try {
-            const response = await fetch('/addTask', {
+            const response = await fetch('https://taskmanagerappbyrajeshwar.onrender.com/addTask', {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
