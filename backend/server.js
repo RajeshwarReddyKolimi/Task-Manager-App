@@ -38,10 +38,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/session', (req, res) => {
     try {
-        if (!req.session || !req.session.user) {
-            return res.status(200).json({ value: false });
-        } else {
+        if (req.session.user) {
             return res.status(200).json({ value: true, user: req.session.user });
+        } else {
+            return res.status(200).json({ value: false });
         }
     } catch (error) {
         res.status(500).json({ error: 'An error occurred while checking session' });
