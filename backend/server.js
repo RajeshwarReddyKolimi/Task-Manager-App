@@ -36,11 +36,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // app.use(express.static(path.join(__dirname, '../frontend/build/')));
 
-
 app.get('/session', (req, res) => {
-    if (req.session === undefined || req.session.user === undefined)
-        return res.status(200).json({ value: false });
-    res.status(200).json({ value: true, user: req.session.user });
+    try {
+        if (!req.session || !req.session.user) {
+            return res.status(200).json({ value: false });
+        } else {
+            return res.status(200).json({ value: true, user: req.session.user });
+        }
+    } catch (error) {
+        res.status(500).json({ error: 'An error occurred while checking session' });
+    }
 });
 
 // app.get('/', (req, res) => {
