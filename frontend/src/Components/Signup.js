@@ -16,7 +16,7 @@ export default function Signup(props) {
                 repassword.value = "";
                 return;
             }
-            const response = await fetch('/signup', {
+            const response = await fetch('https://taskmanagerappbyrajeshwar.onrender.com/signup', {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
