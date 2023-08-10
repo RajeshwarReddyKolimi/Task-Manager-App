@@ -5,7 +5,7 @@ const app = express();
 const port = 3000;
 const mongoose = require('mongoose');
 const User = require('./User');
-// const session = require('express-session');
+const session = require('express-session');
 const MongoStore = require('connect-mongo')
 const cors = require('cors');
 
