@@ -25,9 +25,8 @@ export default function Signup(props) {
             }
             if (password.value.length < 4)
                 return setWarning("Password should be atleast 4 characters long");
-            // const response = await fetch('https://taskmanagerappbyrajeshwar.onrender.com/signup', {
             setWarning('');
-            const response = await fetch('http://localhost:3000/signup', {
+            const response = await fetch('https://taskmanagerappbyrajeshwar.onrender.com/signup', {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
