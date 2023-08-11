@@ -51,7 +51,7 @@ mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTo
 
 app.use(
     cors({
-        origin: 'https://task-manager-by-rajeshwar.netlify.app/',
+        origin: 'https://task-manager-by-rajeshwar.netlify.app',
         credentials: true,
     })
 );
