@@ -15,6 +15,8 @@ export default function Task(props) {
             )}
             <div className="task-header">
                 <h2 className="task-title">{type}</h2>
+                <div className="task-count">{taskItem.length}</div>
+                <div className="task-header-buffer"></div>
                 {type === "Todo" ? <button onClick={() => setShowAddTask(true)} className="add-task">+</button> : <div className="task-circle"></div>}
             </div>
             <div className='task-type'>

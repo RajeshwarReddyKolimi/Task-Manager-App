@@ -44,8 +44,9 @@
 }
 
 .user-button {
-
-    background-color: white;
+    background-color: transparent;
+    width: 48px;
+    height: 48px;
 }
 
 .user {
@@ -55,6 +56,14 @@
     margin: 2px;
     border-radius: 50%;
     color: rgb(102, 102, 102);
+}
+
+.user:hover {
+    font-size: 31px;
+}
+
+.user:active {
+    font-size: 32px;
 }
 
 
@@ -72,14 +81,13 @@
     width: 300px;
     position: fixed;
     background-color: white;
-    top: 85px;
+    top: 100px;
     right: 10px;
     z-index: 2;
     display: flex;
     flex-direction: column;
     box-shadow: 0px 0px 5px 0px grey;
     overflow: hidden;
-    transition: 5s;
 }
 
 .username {
@@ -128,6 +136,24 @@
 
 .task-title {
     color: white;
+}
+
+.task-count {
+    font-size: 16px;
+    color: white;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    width: 28px;
+    height: 28px;
+    background-color: #696969;
+    border-radius: 50%;
+}
+
+.task-header-buffer {
+    flex-grow: 1;
 }
 
 .task-circle {
@@ -241,6 +267,10 @@
 
 @media screen and (max-width:325px) {
     .header * {
-        font-size: 24px;
+        font-size: 20px;
+    }
+
+    .user-details {
+        width: 90%;
     }
 }

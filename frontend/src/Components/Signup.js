@@ -17,6 +17,9 @@ export default function Signup(props) {
             if (username.value.trim() === "") {
                 return setWarning("Username cannot be empty");
             }
+            if (username.value.trim().length > 25) {
+                return setWarning("Username cannot be longer than 25 characters");
+            }
             if (password.value !== repassword.value) {
                 setWarning("Passwords do not match");
                 password.value = "";
