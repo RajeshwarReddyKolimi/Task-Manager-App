@@ -70,7 +70,7 @@ export default function Card(props) {
             }
             const currentDate = new Date();
             const deadlineDate = new Date(deadline);
-            const timeDif = Math.floor((deadlineDate - currentDate - (11 * 60 * 30)) / 1000);
+            const timeDif = Math.floor((deadlineDate - currentDate - (11 * 60 * 30 * 1000)) / 1000);
             if (timeDif <= 0 && !isExpired) {
                 isExpired = true;
                 moveTask("Expired");
