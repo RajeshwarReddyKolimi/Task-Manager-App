@@ -56,19 +56,19 @@
     margin: 10px;
     border: 1px solid #454545;
     width: var(--form-width);
+    max-width: var(--form-width);
     padding: 10px;
 }
 
 .form-button {
     color: white;
     background-color: #454545;
-    margin: 10px;
+    margin: 10px auto;
     border: 1px solid #454545;
     width: var(--form-width);
     padding: 10px;
 }
 
-.form-input:focus {}
 
 .form-close {
     position: absolute;
@@ -93,4 +93,16 @@
 .form-warning {
     color: rgb(211, 39, 39);
     margin: 10px;
+    max-width: var(--form-width);
+}
+
+@media screen and (max-width:360px) {
+    .form-container {
+        width: 95vw;
+    }
+
+    :root {
+        --form-width: 90%;
+    }
+
 }

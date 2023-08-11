@@ -7,26 +7,34 @@ export default function Login(props) {
         try {
             const email = document.getElementById('login-email');
             const password = document.getElementById('login-password');
-            const response = await fetch('https://taskmanagerappbyrajeshwar.onrender.com/login', {
+            if (email.value.trim() === "")
+                return setWarning("Email cannot be empty");
+            if (password.value === "")
+                return setWarning("Enter Password");
+            setWarning('');
+            // const response = await fetch('https://taskmanagerappbyrajeshwar.onrender.com/login', {
+            const response = await fetch('http://localhost:3000/login', {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email: email.value, password: password.value })
+                body: JSON.stringify({ email: email.value.trim(), password: password.value })
             });
             const data = await response.json();
             if (response.ok) {
                 email.value = "";
                 password.value = "";
+                localStorage.setItem('token', data.token);
+                props.setCurrentUser(data.name);
                 props.setLoginStatus(true);
             }
             else {
-                console.error(data.error);
+                console.error("Couldn't login");
                 setWarning(data.error);
             }
         }
         catch (error) {
-            console.error("Error in catch");
+            console.error("Couldn't login");
         }
     }
     return (

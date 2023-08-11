@@ -8,23 +8,27 @@ const userSchema = new mongoose.Schema({
         priority: { type: String, required: true },
         title: { type: String, required: true },
         description: { type: String, required: true },
-        deadline: { type: Date }
+        deadline: { type: Date },
+        cardId: { type: String }
     }],
     Ongoing: [{
         priority: { type: String, required: true },
         title: { type: String, required: true },
         description: { type: String, required: true },
-        deadline: { type: Date }
+        deadline: { type: Date },
+        cardId: { type: String }
     }],
     Done: [{
         priority: { type: String, required: true },
         title: { type: String, required: true },
-        description: { type: String, required: true }
+        description: { type: String, required: true },
+        cardId: { type: String }
     }],
     Expired: [{
         priority: { type: String, required: true },
         title: { type: String, required: true },
-        description: { type: String, required: true }
+        description: { type: String, required: true },
+        cardId: { type: String }
     }]
 })
 module.exports = mongoose.model("User", userSchema);

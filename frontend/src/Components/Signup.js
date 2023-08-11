@@ -10,18 +10,29 @@ export default function Signup(props) {
             const username = document.getElementById('signup-username');
             const password = document.getElementById('signup-password');
             const repassword = document.getElementById('signup-repassword');
+            if (email.value.trim() === "") {
+                setWarning("Email cannot be empty");
+                return;
+            }
+            if (username.value.trim() === "") {
+                return setWarning("Username cannot be empty");
+            }
             if (password.value !== repassword.value) {
                 setWarning("Passwords do not match");
                 password.value = "";
                 repassword.value = "";
                 return;
             }
-            const response = await fetch('https://taskmanagerappbyrajeshwar.onrender.com/signup', {
+            if (password.value.length < 4)
+                return setWarning("Password should be atleast 4 characters long");
+            // const response = await fetch('https://taskmanagerappbyrajeshwar.onrender.com/signup', {
+            setWarning('');
+            const response = await fetch('http://localhost:3000/signup', {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email: email.value, username: username.value, password: password.value })
+                body: JSON.stringify({ email: email.value.trim(), username: username.value.trim(), password: password.value })
             });
             const data = await response.json();
             if (response.ok) {
@@ -29,15 +40,17 @@ export default function Signup(props) {
                 username.value = "";
                 password.value = "";
                 repassword.value = "";
+                localStorage.setItem('token', data.token);
                 props.setLoginStatus(true);
+                props.setCurrentUser(data.name);
             }
             else {
-                console.error(data.error);
+                console.error("Couldn't Sign Up");
                 setWarning(data.error);
             }
         }
         catch (error) {
-            console.error("Error in catch");
+            console.error("Couldn't Sign Up");
         }
     }
     return (

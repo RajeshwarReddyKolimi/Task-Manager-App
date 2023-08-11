@@ -9,43 +9,38 @@ export default function TaskManager() {
     const [signup, setSignup] = useState(false);
     const [loginStatus, setLoginStatus] = useState(false);
     const [currentUser, setCurrentUser] = useState(null);
-
     useEffect(() => {
-        async function checkSession() {
-            try {
-                const response = await fetch('https://taskmanagerappbyrajeshwar.onrender.com/session', {
-                    method: 'GET',
-                    credentials: 'include',
-                });
-                const data = await response.json();
-                if (response.ok) {
-                    if (data.value) {
-                        setCurrentUser(data.user.name);
-                        setLoginStatus(true);
-                    }
-                }
-            } catch (error) {
-                console.error("Couldn't load details:", error);
+        checkStatus();
+        async function checkStatus() {
+            if (localStorage.getItem('token') !== null) {
+                setLoginStatus(true);
+            }
+            else {
+                setLoginStatus(false);
             }
         }
-        checkSession();
-    }, []);
-
+    }, [loginStatus]);
     async function logout() {
         try {
+            const token = localStorage.getItem('token');
             const response = await fetch('https://taskmanagerappbyrajeshwar.onrender.com/logout', {
-                method: 'GET',
-                credentials: 'include',
+                method: 'POST',
+                headers: {
+                    'contentType': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                credentials: 'include'
             });
-            const data = response.json();
+            const data = await response.json();
             if (response.ok) {
+                localStorage.removeItem('token');
                 setLoginStatus(false);
                 setCurrentUser(null);
             } else {
-                console.error(data.error);
+                console.error("Couldn't logout: Problem with server");
             }
         } catch (error) {
-            console.error("Couldn't Logout in Catch:", error);
+            console.error("Couldn't Logout: Problem with API");
         }
     }
 
@@ -61,9 +56,9 @@ export default function TaskManager() {
                 />
             ) : (
                 signup ? (
-                    <Signup setSignup={setSignup} setLoginStatus={setLoginStatus} />
+                    <Signup setSignup={setSignup} setCurrentUser={setCurrentUser} setLoginStatus={setLoginStatus} />
                 ) : (
-                    <Login setSignup={setSignup} setLoginStatus={setLoginStatus} />
+                    <Login setSignup={setSignup} setCurrentUser={setCurrentUser} setLoginStatus={setLoginStatus} />
                 )
             )}
         </div>

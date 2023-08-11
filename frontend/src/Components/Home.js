@@ -11,60 +11,77 @@ export default function Home(props) {
     const [expired, setExpired] = useState([]);
     const [showUser, setShowUser] = useState(false);
     const [changed, setChanged] = useState(false);
+    const { logout, loginStatus, setCurrentUser, currentUser } = props;
     useEffect(() => {
         run();
-    }, [props.loginStatus, changed]);
+    }, [loginStatus, changed]);
 
     async function run() {
         try {
-            const response = await fetch('https://taskmanagerappbyrajeshwar.onrender.com/getTask');
+            const token = localStorage.getItem('token');
+            const response = await fetch('https://taskmanagerappbyrajeshwar.onrender.com/getTask', {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            });
             const data = await response.json();
             const details = data.userdetails;
             if (response.ok) {
-                const todotemp = [];
-                const ongotemp = [];
-                const donetemp = [];
-                const expiredtemp = [];
-                details.Todo.forEach(temp => {
-                    todotemp.push({
-                        title: temp.title,
-                        priority: temp.priority,
-                        description: temp.description,
-                        deadline: temp.deadline
+                if (data.message === "Invalid")
+                    logout();
+                else {
+                    setCurrentUser(details.name);
+                    const todotemp = [];
+                    const ongotemp = [];
+                    const donetemp = [];
+                    const expiredtemp = [];
+                    details.Todo.forEach(temp => {
+                        todotemp.push({
+                            cardId: temp.cardId,
+                            title: temp.title,
+                            priority: temp.priority,
+                            description: temp.description,
+                            deadline: temp.deadline
+                        });
                     });
-                });
-                details.Ongoing.forEach(temp => {
-                    ongotemp.push({
-                        title: temp.title,
-                        priority: temp.priority,
-                        description: temp.description,
-                        deadline: temp.deadline
+                    details.Ongoing.forEach(temp => {
+                        ongotemp.push({
+                            cardId: temp.cardId,
+                            title: temp.title,
+                            priority: temp.priority,
+                            description: temp.description,
+                            deadline: temp.deadline
+                        });
                     });
-                });
-                details.Done.forEach(temp => {
-                    donetemp.push({
-                        title: temp.title,
-                        priority: temp.priority,
-                        description: temp.description
+                    details.Done.forEach(temp => {
+                        donetemp.push({
+                            cardId: temp.cardId,
+                            title: temp.title,
+                            priority: temp.priority,
+                            description: temp.description
+                        });
                     });
-                });
-                details.Expired.forEach(temp => {
-                    expiredtemp.push({
-                        title: temp.title,
-                        priority: temp.priority,
-                        description: temp.description
+                    details.Expired.forEach(temp => {
+                        expiredtemp.push({
+                            cardId: temp.cardId,
+                            title: temp.title,
+                            priority: temp.priority,
+                            description: temp.description
+                        });
                     });
-                });
-                setTodo([...todotemp]);
-                setOngo([...ongotemp]);
-                setDone([...donetemp]);
-                setExpired([...expiredtemp]);
+                    setTodo([...todotemp]);
+                    setOngo([...ongotemp]);
+                    setDone([...donetemp]);
+                    setExpired([...expiredtemp]);
+                }
             }
             else
-                console.error(data.error);
+                console.error("Couldn't load tasks");
 
         } catch (error) {
-            console.error(error);
+            console.error("Couldn't load details");
         }
     }
 
@@ -78,8 +95,8 @@ export default function Home(props) {
                     setShowUser(false);
                 }}>
                     <div className="user-details">
-                        <div className="username">{props.currentUser}</div>
-                        <button className="logout" onClick={props.logout}><p>Logout</p> <SlLogout /></button>
+                        <div className="username">{currentUser}</div>
+                        <button className="logout" onClick={logout}><p>Logout</p> <SlLogout /></button>
                     </div>
                 </div>}
             <div className="header">
@@ -90,10 +107,10 @@ export default function Home(props) {
 
             </div>
             <div className="task-container">
-                <Task type="Todo" moveType="Ongoing" setChanged={setChanged} taskItem={todo} />
-                <Task type="Ongoing" moveType="Done" setChanged={setChanged} taskItem={ongo} />
-                <Task type="Done" setChanged={setChanged} taskItem={done} />
-                <Task type="Expired" setChanged={setChanged} taskItem={expired} />
+                <Task type="Todo" moveType="Ongoing" setChanged={setChanged} taskItem={todo} logout={logout} />
+                <Task type="Ongoing" moveType="Done" setChanged={setChanged} taskItem={ongo} logout={logout} />
+                <Task type="Done" setChanged={setChanged} taskItem={done} logout={logout} />
+                <Task type="Expired" setChanged={setChanged} taskItem={expired} logout={logout} />
             </div>
         </div>
     )
