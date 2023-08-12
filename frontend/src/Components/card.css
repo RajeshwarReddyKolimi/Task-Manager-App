@@ -238,6 +238,7 @@
 
 .card-desc {
     margin: 10px 0px;
+    white-space: pre-line;
 }
 
 .card-deadline {

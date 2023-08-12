@@ -57,6 +57,8 @@
     border: 1px solid #454545;
     width: var(--form-width);
     max-width: var(--form-width);
+    min-width: var(--form-width);
+    max-height: 60px;
     padding: 10px;
 }
 

@@ -116,7 +116,7 @@ export default function Form(props) {
 
                 <div className="form-field">
                     <label htmlFor="add-task-deadline" className="form-label">Deadline</label>
-                    <input type="datetime-local" defaultValue={deadline} min={new Date().toISOString().slice(0, 16)} name="add-task-deadline" id="add-task-deadline" className="form-input" />
+                    <input type="datetime-local" defaultValue={new Date(deadline).toISOString().slice(0, 16)} min={new Date().toISOString().slice(0, 16)} name="add-task-deadline" id="add-task-deadline" className="form-input" />
                 </div>
                 {warning !== "" && <div className='form-warning'>{warning}</div>}
                 <button type="submit" id="add-task-submit" className='form-button buttons'>Submit</button>
