@@ -2,6 +2,8 @@
 
 The Task Manager App is a full stack web application built using React.js for the frontend, Express.js for the backend, and MongoDB as the database. It provides users with the ability to manage tasks, including logging in, signing up, adding tasks, deleting tasks, moving tasks between different states (Todo, Ongoing, Done), and automatically sending tasks to the "Expired" state when the deadline is reached.
 
+## [Live Demo](https://task-manager-by-rajeshwar.netlify.app/)
+
 ## Features
 
 ### User Authentication:
@@ -40,7 +42,7 @@ The Task Manager App is a full stack web application built using React.js for th
 
 - Clone the repository:
   
-`git clone https://github.com/YourUsername/Task-Manager-App.git`
+`git clone https://github.com/RajeshwarReddyKolimi/Task-Manager-App.git`
 
 - Navigate to the frontend directory and install frontend dependencies:
   
