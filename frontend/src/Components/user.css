@@ -1,14 +1,13 @@
 * {
     font-family: "Inter", sans-serif;
     box-sizing: border-box;
-    
+
     -webkit-tap-highlight-color: transparent;
 }
 
 :root {
     --form-width: 280px;
 }
-
 
 .form-back {
     position: fixed;
@@ -27,6 +26,7 @@
     transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
+    align-items: center;
     box-shadow: 0px 0px 10px 0px #45454585;
     padding: 30px;
     border-radius: 5px;
@@ -47,7 +47,6 @@
 
 .form-footer {
     width: var(--form-width);
-    padding: 10px;
 }
 
 .form-label {
@@ -73,7 +72,6 @@
     padding: 10px;
 }
 
-
 .form-close {
     position: absolute;
     top: 10%;
@@ -88,10 +86,25 @@
     background-color: #141414;
 }
 
+.form-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.form-footer-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 .toggle-signin {
     background-color: white;
-    color: #454545;
+    color: rgb(73, 145, 240);
     border: none;
+}
+
+.guest-login {
+    cursor: pointer;
+    color: rgb(73, 145, 240);
 }
 
 .form-warning {
@@ -100,7 +113,7 @@
     max-width: var(--form-width);
 }
 
-@media screen and (max-width:360px) {
+@media screen and (max-width: 360px) {
     .form-container {
         width: 95vw;
     }
@@ -108,5 +121,4 @@
     :root {
         --form-width: 90%;
     }
-
 }

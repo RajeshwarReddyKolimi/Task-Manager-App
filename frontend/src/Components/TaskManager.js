@@ -12,28 +12,30 @@ export default function TaskManager() {
     useEffect(() => {
         checkStatus();
         async function checkStatus() {
-            if (localStorage.getItem('token') !== null) {
+            if (localStorage.getItem("token") !== null) {
                 setLoginStatus(true);
-            }
-            else {
+            } else {
                 setLoginStatus(false);
             }
         }
     }, [loginStatus]);
     async function logout() {
         try {
-            const token = localStorage.getItem('token');
-            const response = await fetch('https://taskmanagerappbyrajeshwar.onrender.com/logout', {
-                method: 'POST',
-                headers: {
-                    'contentType': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                credentials: 'include'
-            });
+            const token = localStorage.getItem("token");
+            const response = await fetch(
+                "https://taskmanagerappbyrajeshwar.onrender.com/logout",
+                {
+                    method: "POST",
+                    headers: {
+                        contentType: "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                    credentials: "include",
+                }
+            );
             const data = await response.json();
             if (response.ok) {
-                localStorage.removeItem('token');
+                localStorage.removeItem("token");
                 setLoginStatus(false);
                 setCurrentUser(null);
             } else {
@@ -54,12 +56,18 @@ export default function TaskManager() {
                     currentUser={currentUser}
                     setCurrentUser={setCurrentUser}
                 />
+            ) : signup ? (
+                <Signup
+                    setSignup={setSignup}
+                    setCurrentUser={setCurrentUser}
+                    setLoginStatus={setLoginStatus}
+                />
             ) : (
-                signup ? (
-                    <Signup setSignup={setSignup} setCurrentUser={setCurrentUser} setLoginStatus={setLoginStatus} />
-                ) : (
-                    <Login setSignup={setSignup} setCurrentUser={setCurrentUser} setLoginStatus={setLoginStatus} />
-                )
+                <Login
+                    setSignup={setSignup}
+                    setCurrentUser={setCurrentUser}
+                    setLoginStatus={setLoginStatus}
+                />
             )}
         </div>
     );
