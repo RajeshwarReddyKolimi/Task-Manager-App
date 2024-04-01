@@ -41,30 +41,10 @@ export default function Login(props) {
     }
     async function guestLogin() {
         try {
-            const email = "guest@mail.com";
-            const password = "Guest@111";
-            const response = await fetch(
-                "https://taskmanagerappbyrajeshwar.onrender.com/login",
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        email: email,
-                        password: password,
-                    }),
-                }
-            );
-            const data = await response.json();
-            if (response.ok) {
-                localStorage.setItem("token", data.token);
-                props.setCurrentUser(data.name);
-                props.setLoginStatus(true);
-            } else {
-                console.error("Couldn't login");
-                setWarning(data.error);
-            }
+            const email = document.getElementById("login-email");
+            const password = document.getElementById("login-password");
+            email.value = "guest@mail.com";
+            password.value = "Guest@111";
         } catch (error) {
             console.error("Couldn't login");
         }
@@ -124,7 +104,7 @@ export default function Login(props) {
                 <div>Don't have an account? </div>
 
                 <div className="form-footer-item">
-                    <div className="guest-login" onClick={verifyLogin}>
+                    <div className="guest-login" onClick={guestLogin}>
                         Guest Login
                     </div>
                     <a
